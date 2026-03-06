@@ -1,0 +1,35 @@
+{
+  "name": "my-first-playwright-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "test:ui": "playwright test --ui",
+    "test:chromium": "playwright test --project=chromium",
+    "test:firefox": "playwright test --project=firefox",
+    "test:webkit": "playwright test --project=webkit",
+    "test:mobile": "playwright test --project='Mobile Chrome'",
+    "test:saucedemo": "TEST_SITE=saucedemo playwright test tests/saucedemo.spec.ts --headed",
+    "test:todomvc": "TEST_SITE=todomvc playwright test tests/todomvc.spec.ts --headed",
+    "test:parallel": "playwright test --workers=4",
+    "test:serial": "playwright test --workers=1",
+    "report": "playwright show-report",
+    "codegen": "playwright codegen",
+    "codegen:saucedemo": "playwright codegen https://www.saucedemo.com",
+    "codegen:todomvc": "playwright codegen https://demo.playwright.dev/todomvc",
+    "install:browsers": "playwright install"
+  },
+  "keywords": [],
+  "author": "Wayne Myrie Jr",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@faker-js/faker": "^10.3.0",
+    "@playwright/test": "^1.58.2",
+    "@types/node": "^25.3.3",
+    "dotenv": "^17.3.1"
+  }
+}
