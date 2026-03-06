@@ -17,9 +17,14 @@ jobs:
       run: npm ci
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
+      # This part below ending at "run" connects the "Vault" to your "Code"
     - name: Run Playwright tests
+      env:
+        SAUCEDEMO_PASSWORD: ${{ secrets.SAUCEDEMO_PASSWORD }}
+        SAUCEDEMO_STANDARD_USER: ${{ secrets.SAUCEDEMO_STANDARD_USER }}
       run: npx playwright test
-    - uses: actions/upload-artifact@v4
+    - name: Upload Playwright report
+      uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
         name: playwright-report
