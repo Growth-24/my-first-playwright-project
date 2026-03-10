@@ -21,3 +21,4 @@ test('login to Sauce Demo', async ({ page }) => {
     await expect(page.getByText('Products')).toBeVisible();
 
 });
+
