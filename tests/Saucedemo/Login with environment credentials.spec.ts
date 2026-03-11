@@ -1,5 +1,6 @@
 import {test, expect } from '@playwright/test';
-import 'dotenv/config';
+import * as dotenv from 'dotenv';
+dotenv.config();
 import { SauceDemoUsers } from '../../utils/test-data';
 
 
