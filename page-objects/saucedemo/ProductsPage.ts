@@ -51,9 +51,10 @@ export class ProductsPage {
     }
 
     async getCartItemCount(): Promise<string> {
-        try{
+        if(await this.shoppingCartBadge.isVisible()){
             return await this.shoppingCartBadge.textContent() || '0';
-        } catch {
+
+        } {
             return '0';
         }
     }
@@ -78,5 +79,10 @@ export class ProductsPage {
         const removeButton = product.locator('button:has-text("Remove")');
         return await removeButton.isVisible();
     }
+    
+    async goToCart() {
+        await this.shoppingCartLink.click();
+    }
 
 }
+

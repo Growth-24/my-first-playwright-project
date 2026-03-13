@@ -77,10 +77,4 @@ test('can sort products by price low to high', async ({ page }) => {
 
 });
 
-
-
-
-
-
-
 });
