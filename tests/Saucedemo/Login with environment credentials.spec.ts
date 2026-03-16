@@ -27,7 +27,7 @@ test('login with test data helper', async ({ page }) => {
     await page.locator('#password').fill(SauceDemoUsers.standard.password);
     await page.locator('#login-button').click();
   
-    await expect(page).toHaveURL('/inventory.html');
+    await expect(page).toHaveURL('/.*inventory.html');
   });
   
 
