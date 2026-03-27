@@ -40,16 +40,16 @@ export class HerokuappLoginPage {
         await this.logoutButton.click();
     }
 
-    async userNameError(username: string): Promise<boolean> {
+    async userNameError(username: string){
         await this.usernameInput.fill(username);
         await this.loginButton.click();
-        return await this.usernameErrorMessage.isVisible();
+        
     }
 
-    async passwordError(username: string, password: string): Promise<boolean> {
+    async passwordError(username: string, password: string) {
         await this.usernameInput.fill(username);
         await this.passwordInput.fill(password);
-        return await this.passwordErrorMessage.isVisible();
+        await this.loginButton.click();
     }
 
 

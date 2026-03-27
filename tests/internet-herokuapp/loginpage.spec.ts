@@ -9,6 +9,7 @@ test.describe('Login page validation tests', () => {
         const heroKuappLogin = new HerokuappLoginPage(page);
         await heroKuappLogin.goto();
         await heroKuappLogin.login('tomsmith', 'SuperSecretPassword!');
+        await expect(page.getByText('You logged into a secure area')).toBeVisible();
       
     });
 
@@ -18,6 +19,7 @@ test.describe('Login page validation tests', () => {
         await heroKuappLogin.goto();
         await heroKuappLogin.login('tomsmith', 'SuperSecretPassword!');
         await heroKuappLogin.logout();
+        await expect(page.getByText('You logged out of the secure')).toBeVisible();
       
     });
 
@@ -26,6 +28,7 @@ test.describe('Login page validation tests', () => {
         const heroKuappLogin = new HerokuappLoginPage(page);
         await heroKuappLogin.goto();
         await heroKuappLogin.userNameError('waynemyrie')
+        await expect(page.getByText('Your username is invalid! ×')).toBeVisible();
       
     });
 
@@ -36,6 +39,7 @@ test.describe('Login page validation tests', () => {
         const heroKuappLogin = new HerokuappLoginPage(page);
         await heroKuappLogin.goto();
         await heroKuappLogin.passwordError('tomsmith','test1234');
+        await expect(page.locator('#flash')).toContainText('Your password is invalid! ×');
       
     });
 

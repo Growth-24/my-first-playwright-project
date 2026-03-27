@@ -9,7 +9,6 @@ test.describe('Checkbox validation tests', () => {
         const checkboxes = new Checkboxes(page);
         await checkboxes.goto();
         await checkboxes.checkCheckboxOne();
-        await expect(page.getByRole('checkbox').first()).toBeVisible();
         await expect(page.getByRole('checkbox').first()).toBeChecked();
     });
 
@@ -19,7 +18,6 @@ test.describe('Checkbox validation tests', () => {
         const checkboxes = new Checkboxes(page);
         await checkboxes.goto();
         await checkboxes.checkCheckboxTwo();
-        await expect(page.getByRole('checkbox').nth(1)).toBeVisible();
         await expect(page.getByRole('checkbox').nth(1)).toBeChecked();
     });
 
@@ -29,7 +27,6 @@ test.describe('Checkbox validation tests', () => {
         const checkboxes = new Checkboxes(page);
         await checkboxes.goto();
         await checkboxes.uncheckCheckboxOne();
-        await expect(page.getByRole('checkbox').first()).toBeVisible();
         await expect(page.getByRole('checkbox').first()).not.toBeChecked();
     });
 
@@ -39,7 +36,6 @@ test.describe('Checkbox validation tests', () => {
         const checkboxes = new Checkboxes(page);
         await checkboxes.goto();
         await checkboxes.uncheckCheckboxTwo();
-        await expect(page.getByRole('checkbox').nth(1)).toBeVisible();
         await expect(page.getByRole('checkbox').nth(1)).not.toBeChecked();
     });
 
