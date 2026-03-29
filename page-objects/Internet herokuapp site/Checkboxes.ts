@@ -2,19 +2,15 @@ import { Page, Locator} from '@playwright/test';
 
 export class Checkboxes {
     readonly page: Page;
-    readonly checkboxOne: Locator;
-    readonly checkboxTwo: Locator;
-    readonly uncheckboxOne: Locator;
-    readonly uncheckboxTwo: Locator;
+    readonly checkbox: Locator;
+
 
 
     constructor(page: Page) {
 
         this.page = page;
-        this.checkboxOne = page.getByRole('checkbox').first();
-        this.checkboxTwo = page.getByRole('checkbox').nth(1);
-        this.uncheckboxOne = page.getByRole('checkbox').first();
-        this.uncheckboxTwo = page.getByRole('checkbox').nth(1);
+        this.checkbox = page.getByRole('checkbox');
+   
     }
 
     async goto() {
@@ -25,30 +21,24 @@ export class Checkboxes {
 
 
     async checkCheckboxOne(){
-
-        await this.checkboxOne.check();
-       
+        await this.checkbox.first().check();
     }
 
 
     async checkCheckboxTwo(){
-
-        await this.uncheckboxTwo.uncheck();
-        await this.checkboxTwo.check();
+        await this.checkbox.nth(1).uncheck();
+        await this.checkbox.nth(1).check();
        
     }
 
     async uncheckCheckboxOne(){
-        
-        await this.checkboxOne.check();
-        await this.uncheckboxOne.uncheck();
+        await this.checkbox.first().check();
+        await this.checkbox.first().uncheck();
        
     }
 
     async uncheckCheckboxTwo(){
-        
-        await this.uncheckboxTwo.uncheck();
-
+        await this.checkbox.nth(1).uncheck();
 
     }
 
