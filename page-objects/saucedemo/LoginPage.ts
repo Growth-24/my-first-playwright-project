@@ -35,7 +35,7 @@ return await this.errorMessage.textContent() || '';;
 
 async isErrorVisible(): Promise <boolean> {
 
-return await this.errorMessage?.isVisible();
+return await this.errorMessage.isVisible();
 }
 
 async clearError() {
