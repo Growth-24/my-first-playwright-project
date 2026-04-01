@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { Checkboxes } from '../../page-objects/Internet herokuapp site/checkboxes';
+import { Checkboxes } from '../../page-objects/Internet_herokuapp_site/Checkboxes';
 
 test.describe('Checkbox validation tests', () => {
 

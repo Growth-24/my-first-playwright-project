@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { HerokuappLoginPage } from '../../page-objects/Internet herokuapp site/HerokuappLoginPage.ts';
+import { HerokuappLoginPage } from '../../page-objects/Internet_herokuapp_site/HerokuappLoginPage.ts';
 
 test.describe('Login page validation tests', () => {
 

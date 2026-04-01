@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { DropdownList } from '../../page-objects/Internet herokuapp site/DropdownList';
+import { DropdownList } from '../../page-objects/Internet_herokuapp_site/DropdownList';
 
 test.describe('Dropdown list validation tests', () => {
 

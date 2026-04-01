@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { fileUploader } from '../../page-objects/Internet herokuapp site/fileUploader';
+import { fileUploader } from '../../page-objects/Internet_herokuapp_site/fileUploader';
 import path from 'path';
 
 test.describe('File uploader validation tests', () => {

@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { dynamicLoadedPageElements } from '../../page-objects/Internet herokuapp site/dynamicPageElements.ts';
+import { dynamicLoadedPageElements } from '../../page-objects/Internet_herokuapp_site/dynamicPageElements.ts';
 
 test.describe('Dynamic page elements validation tests', () => {
 
