@@ -17,7 +17,7 @@ constructor(page: Page) {
 
     this.page = page;
     this.firstNameInput = page.locator('#first-name');
-    this.lastNameInput = page.locator('#Last-name');
+    this.lastNameInput = page.locator('[data-test="lastName"]');
     this.postalCodeInput = page.locator('#postal-code');
     this.continueButton = page.locator('#continue');
     this.finishButton = page.locator('#finish');
