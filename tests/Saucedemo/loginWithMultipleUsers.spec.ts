@@ -1,5 +1,9 @@
 import {test, expect} from '@playwright/test';
 import {LoginPage} from '../../page-objects/saucedemo/LoginPage';
+import { ProductsPage} from '../../page-objects/saucedemo/ProductsPage';
+
+
+
 
 const testUsers = [
 
@@ -8,6 +12,16 @@ const testUsers = [
     {username: 'problem_user', password: 'secret_sauce',shouldSucceed: true},
     {username: 'invalid_user', password: 'wrong_password',shouldSucceed: false},
 
+];
+
+const productsData = [
+
+    {"name": "Sauce Labs Backpack", "price": "$29.99", "expectedInCart": true},
+    
+    {"name": "Sauce Labs Bike Light", "price": "$9.99", "expectedInCart": true},
+    
+    {"name": "Sauce Labs Bolt T-Shirt", "price": "$15.99", "expectedInCart": true}
+    
 ];
 
 test.describe('SauceDemo Login with Multiple Users', () => {
@@ -44,3 +58,34 @@ test.describe('SauceDemo Login with Multiple Users', () => {
         });
     }
 });
+
+
+test.describe('SauceDemo adding products from array data', () => {
+
+
+    test.beforeEach(async ({page}) => {
+
+        const loginPage = new LoginPage(page);
+        await loginPage.goto();
+        await loginPage.login('standard_user', 'secret_sauce');
+
+  
+    });
+        for (const product of productsData) {
+
+                test(`can add ${product.name} to cart`, async ({page}) => {
+
+                const productsPage = new ProductsPage(page);
+                await productsPage.addProductToCartByName(product.name);
+
+                const isInCart = await productsPage.isProductInCart(product.name);
+                expect(isInCart).toBe(product.expectedInCart);
+
+                const price = await productsPage.getProductPrice(product.name);
+                expect(price).toBe(product.price);
+
+
+            });
+        }
+});
+
