@@ -1,12 +1,10 @@
 
 # Playwright
-node_modules/
-/test-results/
 playwright-report/
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
-/.env/.env
+
 
 
 
@@ -15,8 +13,7 @@ node_modules/
 
 # Test results
 test-results/
-playwright-report/
-playwright/.cache/
+
 
 # Environment variables
 .env
