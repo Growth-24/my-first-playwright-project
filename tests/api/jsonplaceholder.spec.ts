@@ -14,7 +14,7 @@ test.describe('JSON Placeholder API Tests', () => {
         const response = await request.get(`${BASE_URL}`);
         expect(response.status()).toBe(200);
 
-        // When the server replies, it sends the data as a giant block of plain text. Calling .json() translates that text into a structured TypeScript Array/Object so your code can actually read it and interact with it.
+        // posts variable: When the server replies, it sends the data as a giant block of plain text. Calling .json() on the const response variable and it translates that text into a structured TypeScript Array/Object so your code can actually read it and interact with it.
         const posts = await response.json();
 
         // posts.toBeInstanceOf(Array): You are making sure the API didn't just hand you one single item or a weird text string. You expect a whole list (an Array).
@@ -32,6 +32,61 @@ test.describe('JSON Placeholder API Tests', () => {
         expect(posts[0]).toHaveProperty('title');
         expect(posts[0]).toHaveProperty('body');
 
+        console.log('--- SERVER RESPONSE ---');
+        console.log(posts);
+
     });
 
+    test('GET - fetch single post', async ({ request }) => {
+
+        const response = await request.get(`${BASE_URL}/1`);
+        expect(response.status()).toBe(200);
+
+        // post const variable:  When the server replies, it sends the data as a giant block of plain text. Calling .json() on the response const variable, it translates that text into a structured TypeScript Array/Object so your code can actually read it and interact with it.
+
+        const post = await response.json();
+        expect(post.id).toBe(1);
+        expect(post.userId).toBe(1);
+        expect(post.title).toBeTruthy();
+        expect(post.body).toBeTruthy();
+
+        console.log('--- SERVER RESPONSE ---');
+        console.log(post);
+    });
+
+    test('POST - create new post', async ({ request }) => {
+       
+        // newPost: This is the data you want to send to the server. You are creating a new post with a title, body, and userId. The server will take this data and create a new post for you.
+
+        const newPost = {
+            title: 'Test Post',
+            body: 'This is a test post created by Playwright.',
+            userId: 1
+        };
+
+        // request.post: You are changing the action from GET to POST within the response variable which will be used in other steps.
+        // data: newPost - This is how you attach the newPost variable with the data created above to your request. You are telling the server, Here is the information for the new post I want you to create.
+
+        const response = await request.post(`${BASE_URL}`, {
+            data: newPost
+        });
+
+        // we are expecting the response status to be 201 because this means my test post was successfully created. 201 is the API status code for "Created."
+        expect(response.status()).toBe(201);
+
+
+        //createdPost const variable: Just like before, the server sends back a receipt in plain text, and we use .json() on the response variable to translate it into a readable object. Then the assertions check that the title, body, and userId in the response match what was sent, and that the server assigned a new id to your post.
+        
+        //(createdPost.id).toBeTruthy(): I didn't send an id in my original test post "(newPost)" because it's the server's job to generate that number. Because you don't know exactly what number the server will pick (it could be 101, it could be 5042), you use .toBeTruthy(). This just means: "I don't care what the number is, I just expect an ID to exist."
+        
+        const createdPost = await response.json();
+        expect(createdPost.title).toBe(newPost.title);
+        expect(createdPost.body).toBe(newPost.body);
+        expect(createdPost.userId).toBe(newPost.userId);
+        expect(createdPost.id).toBeTruthy();
+
+        console.log('--- SERVER RESPONSE ---');
+        console.log(createdPost);
+
+    });    
 });
