@@ -88,5 +88,62 @@ test.describe('JSON Placeholder API Tests', () => {
         console.log('--- SERVER RESPONSE ---');
         console.log(createdPost);
 
-    });    
+    });
+    
+    
+    
+    test('PUT - update existing post', async ({ request }) => {
+
+        const updatedPost = {
+            id: 1,
+            title: 'Updated Test Post',
+            body: 'This is an updated test post created by Playwright.',
+            userId: 1
+        };
+
+        const response = await request.put(`${BASE_URL}/1`, {
+
+            data: updatedPost
+
+        });
+
+
+        expect(response.status()).toBe(200);
+
+        const post = await response.json();
+        expect(post.title).toBe(updatedPost.title);
+        expect(post.body).toBe(updatedPost.body);
+
+        console.log('--- SERVER RESPONSE ---');
+        console.log(post);
+
+    });
+
+
+    
+    test('DELETE - remove a post', async ({ request }) => {
+
+        const response = await request.delete(`${BASE_URL}/1`);
+        expect(response.status()).toBe(200);
+    
+    });
+
+
+    test('GET - fetch posts for specific user', async ({ request }) => {
+
+        const response = await request.get(`${BASE_URL}?userId=1`);
+        expect(response.status()).toBe(200);
+
+        const posts = await response.json();
+        expect(posts).toBeInstanceOf(Array);
+
+        // Verify all posts belong to userId: 1
+
+        for(const post of posts) {
+            expect(post.userId).toBe(1);
+        }
+
+        console.log('--- SERVER RESPONSE ---');
+        console.log(posts);
+    });
 });
