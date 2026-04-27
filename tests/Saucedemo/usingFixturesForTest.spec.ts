@@ -12,6 +12,56 @@ testFixtures('add product to cart', async ({loginAuthentication, productsPage})=
 
 });
 
+testFixtures('remove product from cart', async ({loginAuthentication, productsPage})=> {
+
+    await productsPage.addProductToCartByName('Sauce Labs Backpack');
+    await productsPage.removeProductFromCartByName('Sauce Labs Backpack');
+
+    const cartCount = await productsPage.getCartItemCount();
+    expect(cartCount).toBe('0');
+
+});
+
+testFixtures('sort products by price high to low', async ({loginAuthentication, productsPage})=> {
+
+    await productsPage.sortBy('hilo');
+
+    const productNames = await productsPage.getProductNames();
+    expect(productNames[0]).toBe('Sauce Labs Fleece Jacket');
+
+});
+
+testFixtures('Login error message', async ({loginPage})=> {
+
+    await loginPage.goto();
+    await loginPage.login('invalid_user', 'invalid_password');
+
+    const errorMessage = await loginPage.getErrorMessage();
+    expect(errorMessage).toBe('Epic sadface: Username and password do not match any user in this service');
+    
+});
+
+
+
+testFixtures('Clearing login error message to be able to log in successfully', async ({loginPage, productsPage})=> {
+
+    await loginPage.goto();
+    await loginPage.login('invalid_user', 'wrong');
+
+    const errorMessage = await loginPage.getErrorMessage();
+    expect(errorMessage).toBe('Epic sadface: Username and password do not match any user in this service');
+    
+
+    await loginPage.clearError();
+    
+    await loginPage.login('standard_user', 'secret_sauce');
+    const productCount = await productsPage.getProductCount();
+    expect(productCount).toBe(6);
+    
+});
+
+ 
+
 
 // How loginAuthentication fixture works for a test:
 
@@ -30,4 +80,3 @@ testFixtures('add product to cart', async ({loginAuthentication, productsPage})=
     // This is because testFixtures is the version of test that has been extended with the saucedemo-specific fixtures (loginPage, productsPage, loginAuthentication). If I had used the regular "test" from Playwright, it wouldn't recognize those fixtures and would throw an error. By using testFixtures, I can seamlessly access those pre-configured fixtures in my test.
 
 
-    

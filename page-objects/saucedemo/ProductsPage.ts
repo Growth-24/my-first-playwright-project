@@ -27,16 +27,8 @@ export class ProductsPage {
     }
 
     async getProductNames(): Promise<string[]> {
-        const items = await this.inventoryItems.all();
-        const names: string[] = [];
-        
-        for (const item of items){
-            const name = await item.locator('.inventory_item_name').textContent();
-
-        if(name) names.push(name);
-        }
-
-        return names;
+        await this.page.locator('.inventory_item_name').first().waitFor(); // allTextContents() does not wait for the elements to appear. If the page is still loading when this line runs, it might return an empty array. Which is why i added this line of code to ensure it loads first.
+        return await this.page.locator('.inventory_item_name').allTextContents();
 
     }
 

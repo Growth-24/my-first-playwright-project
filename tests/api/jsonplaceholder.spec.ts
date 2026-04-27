@@ -3,6 +3,8 @@ import { test, expect } from '@playwright/test';
 // BASE_URL: saving the website address into a constant variable. If I ever need to test 10 different things on this API, I can just use BASE_URL instead of typing out the huge link every time.
 
 const BASE_URL = 'https://jsonplaceholder.typicode.com/posts';
+const BASE_URL_TODOS = 'https://jsonplaceholder.typicode.com/todos';
+
 
 test.describe('JSON Placeholder API Tests', () => {
 
@@ -146,4 +148,30 @@ test.describe('JSON Placeholder API Tests', () => {
         console.log('--- SERVER RESPONSE ---');
         console.log(posts);
     });
+
+
+
+
+    test('GET -confirming todos have a completed property that is a boolean of true or false', async ({ request }) => {
+
+        const response = await request.get(`${BASE_URL_TODOS}`);
+        expect(response.status()).toBe(200);
+
+        const posts = await response.json();
+        expect(posts).toBeInstanceOf(Array);
+
+        // Verify all posts have a 'completed' property that is a boolean of true or false. 
+
+        for(const post of posts) {
+            expect(typeof post.completed).toBe('boolean');
+            expect(post.completed === true || post.completed === false).toBe(true);
+        };
+
+        // log it out to show that the completed property is indeed a boolean of true or false for all tasks.
+        console.log('--- SERVER RESPONSE ---');
+        console.log(posts);
+    });
+
+
+
 });
