@@ -1,3 +1,10 @@
+
+
+// Think of fixtures like meal prep:
+// Instead of cooking every single meal from scratch (writing login code for every test), you prep ingredients once (create a fixture) and assemble meals quickly (use the fixture).
+
+
+
 import {test as base }  from '@playwright/test';
 
 import {LoginPage} from '../page-objects/saucedemo/LoginPage';
