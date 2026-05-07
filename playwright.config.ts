@@ -45,10 +45,49 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
+    // setup project
+    {name: 'setup', testMatch: /.*\.setup\.ts/},
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: { ...devices['Desktop Chrome'], storageState: 'playwright/.auth/user.json' },
+      dependencies: ['setup'],
     },
+
+    // { name: 'setup', testMatch: /.*\.setup\.ts/ },
+    // name: 'setup': This gives this specific project a nickname. It’s like labeling a folder so you can refer to it later.
+
+    // testMatch: This is a Regular Expression. It tells Playwright: "Scan the entire project for any files that end in .setup.ts and run them as part of this 'setup' project." This keeps your authentication logic separate from your actual test logic.
+
+    // 
+    
+    // dependencies: ['setup']: This is the most critical part of the flow. It tells Playwright: "You are not allowed to start the 'chromium' project until the 'setup' project has finished successfully."
+
+    // Without this line, Playwright would try to run both at the same time. The 'chromium' tests would fail because the user.json file hasn't been created yet! 
+
+//     The Setup File is the "Worker"
+// The file matching *.setup.ts (like your sessionStorage.setup.ts) is a specialized test. Its only job is to:
+
+// Launch the browser.
+
+// Interact with the LoginPage object.
+
+// Perform the login() method.
+
+// Crucially: Take a "snapshot" of the cookies and local storage and save them to user.json.
+
+// 2. The Config is the "Coordinator"
+// The configuration doesn't perform the login itself; it just manages the timing.
+
+// It ensures the Setup File runs first.
+
+// It tells the other tests where to find the saved session data so they don't have to log in themselves.
+
+
+
+
+
+
+
 
     {
       name: 'firefox',
