@@ -82,11 +82,24 @@ export default defineConfig({
 
 // It tells the other tests where to find the saved session data so they don't have to log in themselves.
 
+    {
 
+      name: 'standard-user',
+      use: { ...devices['Desktop Chrome'], storageState: 'playwright/.auth/standard.json'},
+      dependencies: ['setup'],
+      // This project ONLY picks up tests that have "standard" in the test title not the file name, so we can have a single test file with both standard and performance user tests and they will be picked up by the correct project based on the test title.
+      grep: /.*standard.*/,
 
+    },
 
+    {
+      name: 'performance-user',
+      use: { ...devices['Desktop Chrome'], storageState: 'playwright/.auth/performance.json'},
+      dependencies: ['setup'],
+      // This project ONLY picks up tests that have "performance" in the title not the file name, so we can have a single test file with both standard and performance user tests and they will be picked up by the correct project based on the test title.
+      grep: /.*performance.*/,
 
-
+    },
 
 
     {
