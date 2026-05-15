@@ -10,7 +10,7 @@ test.describe('File Upload Tests', () => {
 
         // Create or use existing test file
 
-        const filePath = path.join(__dirname, '../test-data/sample.txt');
+        const filePath = path.join(__dirname, '../../test-data/sample.txt');
 
         // Upload the file
 
@@ -25,5 +25,21 @@ test.describe('File Upload Tests', () => {
 
         await expect(page.locator('#uploaded-files')).toHaveText('sample.txt');
 
+    });
+
+    test('upload multiple files', async ({page}) => {
+
+        await page.goto('https://the-internet.herokuapp.com/upload');
+        
+        const files = [path.join(__dirname, '../../test-data/file1.txt'), path.join(__dirname, '../test-data/file2.txt'), ];
+
+        const fileInput = page.locator('#file-upload');
+        await fileInput.setInputFiles(files);
+        await page.locator('#file-submit').click();
+
+        // Verify both files uploaded
+
+        const uploadedFiles = page.locator('#uploaded-files');
+        await expect(uploadedFiles).toContainText('file1.txt');
     });
 });
