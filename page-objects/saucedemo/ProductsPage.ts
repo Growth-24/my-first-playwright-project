@@ -22,6 +22,10 @@ export class ProductsPage {
         await this.page.goto('https:///www.saucedemo.com/inventory.html');
     }
 
+    async productsTitle() {
+        await this.pageTitle.isVisible();
+    }
+
     async getProductCount(): Promise<number> {
         return await this.inventoryItems.count();
     }
