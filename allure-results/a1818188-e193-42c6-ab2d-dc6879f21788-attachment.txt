@@ -1,0 +1,9 @@
+--- SERVER RESPONSE ---
+{
+  id: 21,
+  title: 'Test Product',
+  price: 13.5,
+  description: 'This is a test product created by Playwright.',
+  image: 'https://i.pravatar.cc',
+  category: 'electronics'
+}

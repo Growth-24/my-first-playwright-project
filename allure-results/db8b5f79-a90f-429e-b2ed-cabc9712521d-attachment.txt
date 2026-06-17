@@ -1,0 +1,1 @@
+Page load time with delay: 4335 ms

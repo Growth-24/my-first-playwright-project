@@ -1,0 +1,4 @@
+--- SERVER RESPONSE ---
+{
+  token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXIiOiJqb2huZCIsImlhdCI6MTc4MTYzNDM4OH0.j5fAxZoyoMuTQUlYJlyf2Scwd5_HOskrYXcyXR_tJcU'
+}

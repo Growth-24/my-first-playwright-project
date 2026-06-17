@@ -1,0 +1,14 @@
+Request:  GET https://jsonplaceholder.typicode.com/
+Response:  200 https://jsonplaceholder.typicode.com/
+Request:  GET https://jsonplaceholder.typicode.com/style.css
+Request:  GET https://jsonplaceholder.typicode.com/mockend.svg
+Request:  GET https://jsonplaceholder.typicode.com/tower-icon-and-logo-1400x260.png
+Response:  200 https://jsonplaceholder.typicode.com/style.css
+Response:  200 https://jsonplaceholder.typicode.com/mockend.svg
+Response:  200 https://jsonplaceholder.typicode.com/tower-icon-and-logo-1400x260.png
+Request:  GET https://server.ethicalads.io/api/v1/decision/?publisher=jsonplaceholdertypicodecom&ad_types=image-v1&div_ids=ad_1781634387026_195633046&callback=ad_1781634387026_886983&keywords=javascript%7Ctypescript%7Cmobile%7Creact%7Cvue%7Cfrontend%7Cfront-end%7Cbackend%7Cback-end&campaign_types=paid%7Cpublisher-house%7Ccommunity%7Chouse&format=jsonp&client_version=2.4.0&placement_index=0&url=https%3A%2F%2Fjsonplaceholder.typicode.com%2F
+Request:  POST https://www.google-analytics.com/g/collect?v=2&tid=G-E3C3GCQVBN&gtm=45je66f0v884780828za200zd884780828&_p=1781634386899&gcd=13l3l3l3l1l1&npa=0&dma=0&are=1&cid=1972542552.1781634387&frm=0&pscdl=noapi&rcb=4&sr=1280x720&uaa=arm&uab=64&uafvl=HeadlessChrome%3B147.0.7727.15%7CNot.A%252FBrand%3B8.0.0.0%7CChromium%3B147.0.7727.15&uam=&uamb=0&uap=macOS&uapv=26.5.1&uaw=0&ul=en-us&_s=1&tag_exp=115616985~115938465~115938469~119381662~119392696~119392704~119456239~119456247&sid=1781634387&sct=1&seg=0&dl=https%3A%2F%2Fjsonplaceholder.typicode.com%2F&dt=JSONPlaceholder%20-%20Free%20Fake%20REST%20API&en=page_view&_fv=1&_nsi=1&_ss=1&_ee=1&tfd=463
+Request:  POST https://jsonplaceholder.typicode.com/cdn-cgi/rum?
+Response:  204 https://jsonplaceholder.typicode.com/cdn-cgi/rum?
+Response:  204 https://www.google-analytics.com/g/collect?v=2&tid=G-E3C3GCQVBN&gtm=45je66f0v884780828za200zd884780828&_p=1781634386899&gcd=13l3l3l3l1l1&npa=0&dma=0&are=1&cid=1972542552.1781634387&frm=0&pscdl=noapi&rcb=4&sr=1280x720&uaa=arm&uab=64&uafvl=HeadlessChrome%3B147.0.7727.15%7CNot.A%252FBrand%3B8.0.0.0%7CChromium%3B147.0.7727.15&uam=&uamb=0&uap=macOS&uapv=26.5.1&uaw=0&ul=en-us&_s=1&tag_exp=115616985~115938465~115938469~119381662~119392696~119392704~119456239~119456247&sid=1781634387&sct=1&seg=0&dl=https%3A%2F%2Fjsonplaceholder.typicode.com%2F&dt=JSONPlaceholder%20-%20Free%20Fake%20REST%20API&en=page_view&_fv=1&_nsi=1&_ss=1&_ee=1&tfd=463
+Total API calls:  7
