@@ -1,3 +1,0 @@
---- VISIBLE PAGE CONTENT ---
-{"error":"Internal Server Error","message":"Simulated API failure"}
-----------------------------

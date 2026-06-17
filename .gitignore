@@ -49,3 +49,7 @@ coverage/
 *.tmp
 temp/
 
+# Allure raw results and generated reports
+allure-results/
+allure-report/
+

@@ -1,2 +1,0 @@
-Starting test suite
-Products test suite completed

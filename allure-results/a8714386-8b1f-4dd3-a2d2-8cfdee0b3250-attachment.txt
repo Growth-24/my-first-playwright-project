@@ -1,7 +1,0 @@
---- SERVER RESPONSE ---
-{
-  title: 'Test Post',
-  body: 'This is a test post created by Playwright.',
-  userId: 1,
-  id: 101
-}
