@@ -50,8 +50,6 @@ test.describe('SauceDemo login accounts logic tests',()=>{
     }); 
 
     test('clearing login error message', async ({ page }) => {
-        const loginPage = new LoginPage(page);
-    
         await loginPage.goto();
         await loginPage.login('invalid_user', 'wrong');
         
