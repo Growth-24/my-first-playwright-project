@@ -53,13 +53,13 @@ test.describe('Cart Item Display Details',()=> {
 
     test('should display product descriptions in cart', async () => {
 
-        // Add items with known descriptions
+        // Add items with known descriptions, chose two random products to verify their descriptions are displayed correctly in the cart
 
         await productsPage.addProductToCartByName('Sauce Labs Backpack');
         await productsPage.addProductToCartByName('Sauce Labs Onesie');
         await productsPage.clickShoppingCart();
 
-        // Get descriptions from cart
+        // Get descriptions from cart. 
 
         const backpackDescription = await cartPage.getProductDescription('Sauce Labs Backpack');
         const onesieDescription = await cartPage.getProductDescription('Sauce Labs Onesie');

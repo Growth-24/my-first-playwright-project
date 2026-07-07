@@ -76,7 +76,7 @@ testFixtures('Clearing login error message to be able to log in successfully', a
     // Playwright is forced to execute that block of code before the test body begins. It’s a clean way to handle Prerequisites without cluttering your test with beforeEach blocks.
 
 
-    // I imported testFixtures variable from ../../Fixtures/saucedemo and used it in the test instead of "test". 
-    // This is because testFixtures is the version of test that has been extended with the saucedemo-specific fixtures (loginPage, productsPage, loginAuthentication). If I had used the regular "test" from Playwright, it wouldn't recognize those fixtures and would throw an error. By using testFixtures, I can seamlessly access those pre-configured fixtures in my test.
+    // I imported testFixtures variable from ../../Fixtures/saucedemo and used it in this test instead of "test". 
+    // This is because testFixtures is the version of test that has been extended with the saucedemo-specific fixtures i created  (loginPage, productsPage, loginAuthentication). If I had used the regular "test" from Playwright, it wouldn't recognize those fixtures and would throw an error. By using testFixtures, I can seamlessly access those pre-configured fixtures in my test.
 
 
