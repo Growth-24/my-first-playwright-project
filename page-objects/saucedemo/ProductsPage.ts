@@ -69,6 +69,18 @@ export class ProductsPage {
         return await product.locator('.inventory_item_price').textContent() || '';
     }
 
+    async getAllProductPrices(): Promise<string[]> {
+        // 1. Locate all price elements on the page
+        const priceLocators = this.page.locator('.inventory_item_price');
+        
+        // 2. Extract text from all of them into an array of strings. // .allTextContents() is incredibly safe. If it finds elements, it returns an array of strings. If it finds nothing, it simply returns a clean, empty array ([]), so it won't crash your code!
+        return await priceLocators.allTextContents();
+    }
+
+    async getAllProductsPageText(): Promise<string> {
+        // Grabs the text from the entire products page, including product names, descriptions, prices, and any other text content within the inventory container.
+        return await this.page.locator('.inventory_container').innerText();
+    }
 
     async isProductInCart(productName: string): Promise<boolean> {
         const product = this.page.locator('.inventory_item', { hasText: productName});
